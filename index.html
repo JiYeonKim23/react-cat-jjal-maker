@@ -40,10 +40,13 @@
     }
 
     const Form = () => {                // const 함수이름 = () => // 화살표 함수
+      const [counter, setCounter] = React.useState(1);
+
       function handleForSubmit(event) {
         // 기본 동작 : refresh
         event.preventDefault();
-        console.log('폼 전송됨');
+        console.log('카운터 값 : ' + counter);
+        setCounter(counter + 1);
       }
 
       return (
