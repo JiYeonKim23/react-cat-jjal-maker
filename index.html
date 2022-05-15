@@ -78,10 +78,13 @@
     }
 
     function Favorites() {
+      const cats = ["https://cataas.com/cat/60b73094e04e18001194a309/says/react",
+        "https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn",
+        "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"
+      ]
       return (
         <ul className="favorites">
-          <CatItem img="https://cataas.com/cat/60b73094e04e18001194a309/says/react" />
-          <CatItem img="https://cataas.com/cat/60b73094e04e18001194a309/says/react" />
+          {cats.map(cat => <CatItem img={cat} key={cat} />)}
         </ul>
       )
     }
