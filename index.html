@@ -34,20 +34,11 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script type="text/babel">
-
     function Title(props) {             // function 함수이름(props)
       return <h1>{props.children}</h1>
     }
 
-    const Form = () => {                // const 함수이름 = () => // 화살표 함수
-      const [counter, setCounter] = React.useState(1);
-
-      function handleForSubmit(event) {
-        // 기본 동작 : refresh
-        event.preventDefault();
-        console.log('카운터 값 : ' + counter);
-        setCounter(counter + 1);
-      }
+    const Form = ({ handleForSubmit }) => {                // const 함수이름 = () => // 화살표 함수
 
       return (
         <div>
@@ -96,15 +87,35 @@
     }
     const catLocation = document.querySelector('#app');
 
-    const app = (
-      <div>
-        <Title>1번째 고양이 가라사대</Title>
-        <Form />
-        <MainCard img="https://cataas.com/cat/60b73094e04e18001194a309/says/react" />
-        <Favorites />
-      </div>
-    )
-    ReactDOM.render(app, catLocation)
+    const App = () => { // element -> Component로 변경
+      const images = ["https://cataas.com/cat/60b73094e04e18001194a309/says/react",
+        "https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn",
+        "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"
+      ]
+
+      const [counter, setCounter] = React.useState(1);
+      const [mainImage, setMainImage] = React.useState(images[0]);
+
+      console.log('카운터 값 : ' + counter);
+
+      function handleForSubmit(event) {
+        // 기본 동작 : refresh
+        event.preventDefault();
+        console.log("폼 전송됨");
+        setCounter(counter + 1);
+        setMainImage(images[counter % 3]);
+      }
+
+      return (
+        <div>
+          <Title>{counter}번째 고양이 가라사대</Title>
+          <Form handleForSubmit={handleForSubmit} />
+          <MainCard img={mainImage} />
+          <Favorites />
+        </div>
+      )
+    }
+    ReactDOM.render(<App />, catLocation)
   </script>
 </body>
 
