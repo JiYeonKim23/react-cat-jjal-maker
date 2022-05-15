@@ -83,7 +83,7 @@
       return (
         <div className="main-card">
           <img src={props.img} alt="고양이" width="400" />
-          <button onClick={props.handleHeartClick}>🤍</button>
+          <button onClick={props.onHeartClick}>🤍</button>
         </div>
       )
     }
@@ -115,25 +115,20 @@
       const [mainImage, setMainImage] = React.useState(images[0]);
       const [favorites, setFavorites] = React.useState([images[0], images[1]]);
 
-      console.log('카운터 값 : ' + counter);
-
       function updateMainCat() {
-        setCounter(counter + 1);
         setMainImage(images[counter % 3]);
+        setCounter(counter + 1);
       }
 
       function handleHeartClick() {
-        console.log('하트 눌림');
         setFavorites([...favorites, images[2]])
-        //favorites.push(images[3]) //제대로 작동하지 않음
-        //setFavorites(favorites) 
       }
 
       return (
         <div>
           <Title>{counter}번째 고양이 가라사대</Title>
           <Form updateMainCat={updateMainCat} />
-          <MainCard img={mainImage} handleHeartClick={handleHeartClick} />
+          <MainCard img={mainImage} onHeartClick={handleHeartClick} />
           <Favorites favorites={favorites} />
         </div>
       )
