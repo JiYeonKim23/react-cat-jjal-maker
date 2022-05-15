@@ -38,16 +38,43 @@
       return <h1>{props.children}</h1>
     }
 
-    const Form = ({ handleForSubmit }) => {                // const 함수이름 = () => // 화살표 함수
+    const Form = ({ updateMainCat }) => {                // const 함수이름 = () => // 화살표 함수
+      const includesHangul = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);
+      const [value, setValue] = React.useState('');
+      const [errorMessage, setErrorMessage] = React.useState("");
+
+      function handleInputChange(e) {
+        const userValue = e.target.value;
+        setErrorMessage("");
+        if (includesHangul(userValue)) {
+          setErrorMessage('한글은 입력할 수 없습니다.');
+        }
+        setValue(userValue.toUpperCase());
+      }
+
+      function handleFormSubmit(e) {
+        e.preventDefault();
+        setErrorMessage("");
+
+        if (value === "") {
+          setErrorMessage("빈 값으로 만들 수 없습니다.");
+          return;
+        }
+        updateMainCat();
+      }
 
       return (
         <div>
-          <form onSubmit={handleForSubmit}>
-            <input type="text" name="name" placeholder="영어 대사를 입력해주세요" />
+          <form onSubmit={handleFormSubmit}>
+            <input type="text" name="name" placeholder="영어 대사를 입력해주세요"
+              onChange={handleInputChange}
+              value={value} />
             <button type="submit">생성</button>
           </form>
-          <br />
-        </div>
+          <p style={{ color: 'red' }}>
+            {errorMessage}
+          </p>
+        </div >
 
       )
     }
@@ -90,10 +117,7 @@
 
       console.log('카운터 값 : ' + counter);
 
-      function handleForSubmit(event) {
-        // 기본 동작 : refresh
-        event.preventDefault();
-        console.log("폼 전송됨");
+      function updateMainCat() {
         setCounter(counter + 1);
         setMainImage(images[counter % 3]);
       }
@@ -108,7 +132,7 @@
       return (
         <div>
           <Title>{counter}번째 고양이 가라사대</Title>
-          <Form handleForSubmit={handleForSubmit} />
+          <Form updateMainCat={updateMainCat} />
           <MainCard img={mainImage} handleHeartClick={handleHeartClick} />
           <Favorites favorites={favorites} />
         </div>
