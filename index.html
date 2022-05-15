@@ -53,18 +53,10 @@
     }
 
     const MainCard = (props) => {       // 객체 그대로 받기
-      function handleHeartClick() {
-        alert('하트 눌렀음');
-      }
-
-      const handleHeartMouseOver = () => {
-        alert('스쳐 지나감');
-      }
-
       return (
         <div className="main-card">
           <img src={props.img} alt="고양이" width="400" />
-          <button onClick={handleHeartClick} onMouseOver={handleHeartMouseOver}>🤍</button>
+          <button onClick={props.handleHeartClick}>🤍</button>
         </div>
       )
     }
@@ -77,14 +69,10 @@
       )
     }
 
-    function Favorites() {
-      const cats = ["https://cataas.com/cat/60b73094e04e18001194a309/says/react",
-        "https://cataas.com//cat/5e9970351b7a400011744233/says/inflearn",
-        "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"
-      ]
+    function Favorites({ favorites }) {
       return (
         <ul className="favorites">
-          {cats.map(cat => <CatItem img={cat} key={cat} />)}
+          {favorites.map((cat) => <CatItem img={cat} key={cat} />)}
         </ul>
       )
     }
@@ -98,6 +86,7 @@
 
       const [counter, setCounter] = React.useState(1);
       const [mainImage, setMainImage] = React.useState(images[0]);
+      const [favorites, setFavorites] = React.useState([images[0], images[1]]);
 
       console.log('카운터 값 : ' + counter);
 
@@ -109,12 +98,19 @@
         setMainImage(images[counter % 3]);
       }
 
+      function handleHeartClick() {
+        console.log('하트 눌림');
+        setFavorites([...favorites, images[2]])
+        //favorites.push(images[3]) //제대로 작동하지 않음
+        //setFavorites(favorites) 
+      }
+
       return (
         <div>
           <Title>{counter}번째 고양이 가라사대</Title>
           <Form handleForSubmit={handleForSubmit} />
-          <MainCard img={mainImage} />
-          <Favorites />
+          <MainCard img={mainImage} handleHeartClick={handleHeartClick} />
+          <Favorites favorites={favorites} />
         </div>
       )
     }
