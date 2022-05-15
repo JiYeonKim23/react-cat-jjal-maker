@@ -40,9 +40,15 @@
     }
 
     const Form = () => {                // const 함수이름 = () => // 화살표 함수
+      function handleForSubmit(event) {
+        // 기본 동작 : refresh
+        event.preventDefault();
+        console.log('폼 전송됨');
+      }
+
       return (
         <div>
-          <form>
+          <form onSubmit={handleForSubmit}>
             <input type="text" name="name" placeholder="영어 대사를 입력해주세요" />
             <button type="submit">생성</button>
           </form>
@@ -53,10 +59,18 @@
     }
 
     const MainCard = (props) => {       // 객체 그대로 받기
+      function handleHeartClick() {
+        alert('하트 눌렀음');
+      }
+
+      const handleHeartMouseOver = () => {
+        alert('스쳐 지나감');
+      }
+
       return (
         <div className="main-card">
           <img src={props.img} alt="고양이" width="400" />
-          <button>🤍</button>
+          <button onClick={handleHeartClick} onMouseOver={handleHeartMouseOver}>🤍</button>
         </div>
       )
     }
