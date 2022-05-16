@@ -34,6 +34,15 @@
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
   <script type="text/babel">
+    const jsonLocalStorage = {
+      setItem: (key, value) => {
+        localStorage.setItem(key, JSON.stringify(value));
+      },
+      getItem: (key) => {
+        return JSON.parse(localStorage.getItem(key));
+      },
+    };
+    
     function Title(props) {             // function 함수이름(props)
       return <h1>{props.children}</h1>
     }
@@ -111,19 +120,21 @@
         "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"
       ]
 
-      const [counter, setCounter] = React.useState(Number(localStorage.getItem('counter')));
+      const [counter, setCounter] = React.useState(Number(jsonLocalStorage.getItem('counter')));
       const [mainImage, setMainImage] = React.useState(images[0]);
-      const [favorites, setFavorites] = React.useState([images[0], images[1]]);
+      const [favorites, setFavorites] = React.useState(jsonLocalStorage.getItem('favorites') || []);
 
       function updateMainCat() {
         setMainImage(images[counter % 3]);
         const nextCounter = counter + 1;
         setCounter(nextCounter);
-        localStorage.setItem('counter', nextCounter);
+        jsonLocalStorage.setItem('counter', nextCounter);
       }
 
       function handleHeartClick() {
-        setFavorites([...favorites, images[2]])
+        const nextFavorites = [...favorites, mainImage]
+        setFavorites(nextFavorites);
+        jsonLocalStorage.setItem('favorites', nextFavorites);
       }
 
       return (
