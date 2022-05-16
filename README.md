@@ -25,13 +25,13 @@
   <br/><br/>
 
 > #### {}
->
-> : JS의 표현식 출력
-> <br/><br/>
+
+: JS의 표현식 출력
+<br/><br/>
 
 > ### element
->
-> : const 변수명 = ( )
+
+: const 변수명 = ( )
 
 - **{ 변수명 } 형태로 추가할 수 있음**
   <br/><br/>
@@ -47,18 +47,28 @@
   <br/><br/>
 
 > #### HTML property -> React
->
-> eg) class -> className
-> onclick -> onClick
-> <br/><br/>
+
+eg) class -> className
+onclick -> onClick
+<br/><br/>
 
 > #### 리액트 이벤트 핸들러 함수 작명 시 convention
->
-> : handle로 시작
+
+: handle로 시작
 
 - prop으로 전달할 시, on을 앞에 붙임
+  <br/><br/>
 
-<br/><br/><br/>
+> #### Local Storage : 브라우저 자체 DB
+
+- 브라우저를 새로고침해도 남아 있게 됨
+- String으로 저장됨
+
+eg) localStorage.setItem("name", "지연")  
+localStorage.getItem("name");
+
+- 개발자 도구 -> Application -> Local Storage에서 확인 가능  
+  <br/><br/><br/>
 
 ---
 
