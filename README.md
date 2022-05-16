@@ -74,9 +74,13 @@ localStorage.getItem("name");
 
 ## 기타
 
-#### CSS 스타일링 하기 좋은 라이브러리
+### CSS 스타일링 하기 좋은 라이브러리
 
 1. https://emotion.sh/docs/introduction
 2. https://tailwindcss.com/
+
+### GitHub Pages로 배포
+
+- Settings > Pages 에서 설정
 
 <br/><br/><br/>
