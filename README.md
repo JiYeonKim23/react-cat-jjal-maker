@@ -90,6 +90,23 @@ https://jiyeonkim23.github.io/react-cat-jjal-maker/
 
 <br/><br/>
 
+> ### JS에서 API 호출 방법
+1. fetch('URL')
+.then((response)=> response.json())
+
++ Promise, 비동기에 대한 학습 필요
+https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch  
+[JS 비동기 처리와 콜백 함수](https://joshua1988.github.io/web-development/javascript/javascript-asynchronous-operation/)  
+[JS Promise](https://joshua1988.github.io/web-development/javascript/promise-for-beginners/)  
+[JS async, await](https://joshua1988.github.io/web-development/javascript/js-async-await/)  
+-> [인프런 async-await 예제 무료 강의](https://www.inflearn.com/course/vue-js/lecture/17061)  
+  
+
+2. async await fetch('URL')
+- await : .then과의 기능이 동일함
+
+<br/><br/>
+
 > #### 폼
 
 ```
@@ -146,5 +163,8 @@ localStorage.getItem("name");
 ### GitHub Pages로 배포
 
 - Settings > Pages 에서 설정
+   
+### OpenAPI 모음 Git Repository
+- https://github.com/public-apis/public-apis
 
 <br/><br/><br/>
