@@ -193,6 +193,17 @@ $npm start
 - [import, export](https://joshua1988.github.io/vue-camp/es6+/modules.html#%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF%E1%84%92%E1%85%AA%E1%84%8B%E1%85%B4-%E1%84%91%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%AD%E1%84%89%E1%85%A5%E1%86%BC) : 파일을 모듈처럼 가져오고 내보냄
 - component마다 파일을 생성하는 것이 관례
 <br /><br /><br /><br />
+
+> ### <GitHub Pages에 react 올리기>
+```
+$npm install gh-pages
+- package.json 따로 추가해줘야 하는 것 있음. 코드 참조  
+$npm run build -> build 디렉토리 생성됨  
+$npm run deploy -> GitHub에  "gh-pages had recent pushes" 메시지 뜨고, 해당 branch 생성됨  
+```
+- GitHub > Settings > Pages > 브랜치 변경
+<br /><br /><br /><br />
+
 ---
 
 ## 기타
