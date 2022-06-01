@@ -107,6 +107,15 @@ https://developer.mozilla.org/ko/docs/Web/API/Fetch_API/Using_Fetch
 
 <br/><br/>
 
+> ### UseEffect()
+UseEffect( ()=>{
+}, [] )
+- 두번째 인자가 없으면, 항상 해당 함수들이 호출됨
+- 두번째 인자 : 해당 배열[] 안에 있는 값이 바뀔 때만 해당 함수를 호출
+  - 빈 배열 : 컴포넌트가 맨 처음에 나타날 때만 불림
+
+<br/><br/>
+
 > #### 폼
 
 ```

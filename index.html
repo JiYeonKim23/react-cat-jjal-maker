@@ -42,7 +42,7 @@
         return JSON.parse(localStorage.getItem(key));
       },
     };
-    
+
     const fetchCat = async (text) => {
       const OPEN_API_DOMAIN = "https://cataas.com";
       const response = await fetch(`${OPEN_API_DOMAIN}/cat/says/${text}?json=true`);
@@ -130,6 +130,22 @@
       const [counter, setCounter] = React.useState(Number(jsonLocalStorage.getItem('counter')));
       const [mainImage, setMainImage] = React.useState(images[0]);
       const [favorites, setFavorites] = React.useState(jsonLocalStorage.getItem('favorites') || []);
+
+      async function setInitialCat() {
+        // 앱 진입할 때 API 호출해서 MainImage 생성하기
+        const newCat = await fetchCat("First Cat");
+        console.log(newCat);
+        setMainImage(newCat);
+      }
+
+      // setInitialCat(); // 끊임없이 호출됨
+      console.log("출력");
+      // App이 UI를 새로 그릴 때마다 App의 모든 코드들이 호출됨
+      // -> App이 UI를 새로 그릴 때마다 console이 찍힘
+
+      React.useEffect(() => {
+        setInitialCat();
+      }, [])
 
       async function updateMainCat(value) {
         const newCat = await fetchCat(value)
