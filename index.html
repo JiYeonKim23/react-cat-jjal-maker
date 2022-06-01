@@ -99,7 +99,7 @@
       return (
         <div className="main-card">
           <img src={props.img} alt="고양이" width="400" />
-          <button onClick={props.onHeartClick}>🤍</button>
+          <button onClick={props.onHeartClick}>{props.heart ? "💖" : "🤍"}</button>
         </div>
       )
     }
@@ -113,6 +113,11 @@
     }
 
     function Favorites({ favorites }) {
+      if (favorites.length === 0) {
+        return (
+          <div>사진 위 하트를 눌러 고양이 사진을 저장해주세요</div>
+        )
+      }
       return (
         <ul className="favorites">
           {favorites.map((cat) => <CatItem img={cat} key={cat} />)}
@@ -139,9 +144,7 @@
       }
 
       // setInitialCat(); // 끊임없이 호출됨
-      console.log("출력");
       // App이 UI를 새로 그릴 때마다 App의 모든 코드들이 호출됨
-      // -> App이 UI를 새로 그릴 때마다 console이 찍힘
 
       React.useEffect(() => {
         setInitialCat();
@@ -161,11 +164,13 @@
         jsonLocalStorage.setItem('favorites', nextFavorites);
       }
 
+      const alreadyFavorite = favorites.includes(mainImage);
+
       return (
         <div>
-          <Title>{counter}번째 고양이 가라사대</Title>
+          <Title>{counter ? counter + "번째" : ""} 고양이 가라사대</Title>
           <Form updateMainCat={updateMainCat} />
-          <MainCard img={mainImage} onHeartClick={handleHeartClick} />
+          <MainCard img={mainImage} onHeartClick={handleHeartClick} heart={alreadyFavorite} />
           <Favorites favorites={favorites} />
         </div>
       )
