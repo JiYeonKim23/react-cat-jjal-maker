@@ -75,9 +75,11 @@ https://jiyeonkim23.github.io/react-cat-jjal-maker/
 
 - 컴포넌트 안에서 만들 수 있다.
 - useState 함수로 상태를 추가 가능
-- const [상태명, 상태변경함수명] = React.useState(초기값);
-  eg) const [counter, setCounter] = React.useState(1);
-  eg) setCounter(counter+1); // setCounter(prev => prev + 1); 과 동일
+- const [상태명, 상태변경함수명] = React.useState(초기값);  
+  eg) const [counter, setCounter] = React.useState(1);  
+  eg) setCounter(counter+1);  
+      setCounter(prev => prev + 1); -> [state의 비동기성 처리 가능](https://ko.reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous)
+
 
 <br/><br/>
 
@@ -113,6 +115,9 @@ UseEffect( ()=>{
 - 두번째 인자가 없으면, 항상 해당 함수들이 호출됨
 - 두번째 인자 : 해당 배열[] 안에 있는 값이 바뀔 때만 해당 함수를 호출
   - 빈 배열 : 컴포넌트가 맨 처음에 나타날 때만 불림
+
+- 첫번째 인자가 값일 경우, 매번 해당 값을 읽어온 후, 값을 무시하지만,  
+함수일 경우엔, 초기 렌더링에만 실행되어 더 효율적(지연초기화)
 
 <br/><br/>
 

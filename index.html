@@ -132,9 +132,15 @@
         "https://cataas.com/cat/595f280b557291a9750ebf65/says/JavaScript"
       ]
 
-      const [counter, setCounter] = React.useState(Number(jsonLocalStorage.getItem('counter')));
+      const [counter, setCounter] = React.useState(() => {
+        return Number(jsonLocalStorage.getItem('counter'))
+        // localStorage 접근 최소화로 인한 성능 최적화
+        // 지연초기화 : 실제 내부함수 실행은 초기렌더링에만 실행
+      });
       const [mainImage, setMainImage] = React.useState(images[0]);
-      const [favorites, setFavorites] = React.useState(jsonLocalStorage.getItem('favorites') || []);
+      const [favorites, setFavorites] = React.useState(() => {
+        return (jsonLocalStorage.getItem('favorites') || [])
+      });
 
       async function setInitialCat() {
         // 앱 진입할 때 API 호출해서 MainImage 생성하기
@@ -153,9 +159,11 @@
       async function updateMainCat(value) {
         const newCat = await fetchCat(value)
         setMainImage(newCat);
-        const nextCounter = counter + 1;
-        setCounter(nextCounter);
-        jsonLocalStorage.setItem('counter', nextCounter);
+        setCounter((prev) => { // state의 비동기성 -> 함수로 처리하면 해결 가능
+          const nextCounter = prev + 1;
+          jsonLocalStorage.setItem('counter', nextCounter);
+          return nextCounter;
+        })
       }
 
       function handleHeartClick() {
