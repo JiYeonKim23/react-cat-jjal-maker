@@ -165,6 +165,34 @@ localStorage.getItem("name");
 - 개발자 도구 -> Application -> Local Storage에서 확인 가능  
   <br/><br/><br/>
 
+> ### TODO
+1. Production 버전 React Library 사용
+- 개발용 경고 등이 불포함되어 용량 작음
+
+2. Babel 제거
+- 브라우저에서 매번 JSX를 JS로 통역하는 게 아니라, 이미 통역된 JS로 올림
+<br /><br />
+
+> ## create-react-app
+1. 간단한 앱 껍데기 생성
+2. React Library Setup(개발/운영용)
+3. 테스트 셋업
+4. 빌드 셋업
+5. [web-pack](https://joshua1988.github.io/webpack-guide/webpack/what-is-webpack.html#%EC%9B%B9%ED%8C%A9%EC%97%90%EC%84%9C%EC%9D%98-%EB%AA%A8%EB%93%88) 셋업
+- 서버
+- JS로 변환
+- 코드 용량 최소화, 압축
+<br /><br />
+
+[node](https://joshua1988.github.io/webpack-guide/build/node-npm.html) 설치
+```
+$npx create-react-app 디렉토리명
+$cd 디렉토리명
+$npm start
+```
+- [import, export](https://joshua1988.github.io/vue-camp/es6+/modules.html#%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF%E1%84%92%E1%85%AA%E1%84%8B%E1%85%B4-%E1%84%91%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%AD%E1%84%89%E1%85%A5%E1%86%BC) : 파일을 모듈처럼 가져오고 내보냄
+<br /><br /><br /><br />
+
 ---
 
 ## 기타
