@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 
+import Title from './components/Title'
+
 const jsonLocalStorage = {
   setItem: (key, value) => {
     localStorage.setItem(key, JSON.stringify(value));
@@ -16,10 +18,6 @@ const fetchCat = async (text) => {
   const responseJson = await response.json();
   return `${OPEN_API_DOMAIN}/${responseJson.url}`;
 };
-
-function Title(props) {             // function 함수이름(props)
-  return <h1>{props.children}</h1>
-}
 
 const Form = ({ updateMainCat }) => {                // const 함수이름 = () => // 화살표 함수
   const includesHangul = (text) => /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/i.test(text);

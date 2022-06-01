@@ -191,8 +191,8 @@ $cd 디렉토리명
 $npm start
 ```
 - [import, export](https://joshua1988.github.io/vue-camp/es6+/modules.html#%E1%84%86%E1%85%A9%E1%84%83%E1%85%B2%E1%86%AF%E1%84%92%E1%85%AA%E1%84%8B%E1%85%B4-%E1%84%91%E1%85%B5%E1%86%AF%E1%84%8B%E1%85%AD%E1%84%89%E1%85%A5%E1%86%BC) : 파일을 모듈처럼 가져오고 내보냄
+- component마다 파일을 생성하는 것이 관례
 <br /><br /><br /><br />
-
 ---
 
 ## 기타
